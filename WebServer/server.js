@@ -15,8 +15,8 @@ app.use(express.static('public'))
 app.use('/login', require('./routers/loginRouter'))
 app.use('/registration', require('./routers/registrationRouter'))
 
-app.get('/', (req, resp) => {
-    resp.redirect('http://localhost:3000/views/login')
+app.get(['/', '/login(.html)?'], (req, resp) => {
+    resp.redirect('http://localhost:3000/views/login.html')
 })
 
 /*

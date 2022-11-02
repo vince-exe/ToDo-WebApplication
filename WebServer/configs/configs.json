@@ -1,3 +1,5 @@
 {
-    "ServerPort": 3000
+    "ServerPort": 3000,
+    "maxEmailLen": 35,
+    "maxPasswordLen": 30
 }
