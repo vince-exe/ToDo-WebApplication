@@ -6,3 +6,14 @@ exports.getServerConfigs = async (req, resp) => {
         passwordLen: configs.maxPasswordLen
     })
 }
+
+exports.checkEmail = (email, domains) => {
+    let check = false
+    domains.forEach(domain => {
+        if (email.includes(domain)) {
+            check = true
+        }
+    })
+
+    return check
+}

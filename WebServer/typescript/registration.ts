@@ -1,7 +1,7 @@
 const emailInput = document.getElementById('email-input') as HTMLInputElement
 const passwordInput = document.getElementById('password-input') as HTMLInputElement
 
-const loginButton = document.getElementById('login-button') as HTMLButtonElement
+const registrationButton = document.getElementById('registration-button') as HTMLButtonElement
 
 const errorTextDiv = document.getElementsByClassName('error-text-div')[0] as HTMLDivElement
 const errorText = document.getElementById('error-text') as HTMLHeadingElement
@@ -9,7 +9,6 @@ const errorText = document.getElementById('error-text') as HTMLHeadingElement
 /* do a get request to obtain the server settings */
 fetch('http://localhost:3000/login/api/get-configs')
     .then(response => {
-
         response.text().then(value => {
             let settings = JSON.parse(value)
 
@@ -19,18 +18,18 @@ fetch('http://localhost:3000/login/api/get-configs')
     })
     .catch(reason => {
         console.log(reason)
-        loginButton.disabled = true
+        registrationButton.disabled = true
     })
 
 window.addEventListener('keyup', e => {
-    if (e.code == 'Enter') {
-        loginButton.click()
+    if(e.code == 'Enter') {
+        registrationButton.click()
     }
 })
 
-loginButton.addEventListener('click', (e) => {
+registrationButton.addEventListener('click', e => {
     /* send a POST request */
-    fetch('http://localhost:3000/login/api/login', {
+    fetch('http://localhost:3000/registration/api/registration', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -41,24 +40,27 @@ loginButton.addEventListener('click', (e) => {
         })
     })
     .then(response => {
-        switch (response.status) {
-            /* successfully logged in */
+        switch(response.status) {
             case 200:
-                console.log('logged in')
+                console.log('Successfully registered')
                 break
 
-            /* paramaters wrong */
             case 422:
                 errorTextDiv.style.display = 'flex'
                 errorText.style.display = 'block'
                 errorText.textContent = "Email or password invalid"
                 break
 
-            /* invalid credentials */
-            case 401:
+            case 409:
                 errorTextDiv.style.display = 'flex'
                 errorText.style.display = 'block'
-                errorText.textContent = "There isn't an account associated at this email and password"
+                errorText.textContent = "There is already an account with this email"
+                break
+
+            case 500:
+                errorTextDiv.style.display = 'flex'
+                errorText.style.display = 'block'
+                errorText.textContent = "Application Error"
                 break
         }
     })
@@ -66,5 +68,5 @@ loginButton.addEventListener('click', (e) => {
         errorTextDiv.style.display = 'flex'
         errorText.style.display = 'block'
         errorText.textContent = `${error}`
-    })  
+    })
 })

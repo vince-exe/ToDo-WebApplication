@@ -1,6 +1,6 @@
 var emailInput = document.getElementById('email-input');
 var passwordInput = document.getElementById('password-input');
-var loginButton = document.getElementById('login-button');
+var registrationButton = document.getElementById('registration-button');
 var errorTextDiv = document.getElementsByClassName('error-text-div')[0];
 var errorText = document.getElementById('error-text');
 /* do a get request to obtain the server settings */
@@ -13,16 +13,16 @@ fetch('http://localhost:3000/login/api/get-configs')
     });
 })["catch"](function (reason) {
     console.log(reason);
-    loginButton.disabled = true;
+    registrationButton.disabled = true;
 });
 window.addEventListener('keyup', function (e) {
     if (e.code == 'Enter') {
-        loginButton.click();
+        registrationButton.click();
     }
 });
-loginButton.addEventListener('click', function (e) {
+registrationButton.addEventListener('click', function (e) {
     /* send a POST request */
-    fetch('http://localhost:3000/login/api/login', {
+    fetch('http://localhost:3000/registration/api/registration', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -34,21 +34,23 @@ loginButton.addEventListener('click', function (e) {
     })
         .then(function (response) {
         switch (response.status) {
-            /* successfully logged in */
             case 200:
-                console.log('logged in');
+                console.log('Successfully registered');
                 break;
-            /* paramaters wrong */
             case 422:
                 errorTextDiv.style.display = 'flex';
                 errorText.style.display = 'block';
                 errorText.textContent = "Email or password invalid";
                 break;
-            /* invalid credentials */
-            case 401:
+            case 409:
                 errorTextDiv.style.display = 'flex';
                 errorText.style.display = 'block';
-                errorText.textContent = "There isn't an account associated at this email and password";
+                errorText.textContent = "There is already an account with this email";
+                break;
+            case 500:
+                errorTextDiv.style.display = 'flex';
+                errorText.style.display = 'block';
+                errorText.textContent = "Application Error";
                 break;
         }
     })["catch"](function (error) {

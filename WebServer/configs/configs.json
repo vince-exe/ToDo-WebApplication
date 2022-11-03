@@ -1,5 +1,6 @@
 {
     "ServerPort": 3000,
     "maxEmailLen": 35,
-    "maxPasswordLen": 30
+    "maxPasswordLen": 30,
+    "domainsArray": ["@gmail.com", "@virgilio.it", "@outlook.com"]
 }

@@ -1,8 +1,12 @@
 /* database schemas */
 const userSchema = require('../schema/userSchema')
 
+const serverConfigs = require('../configs/configs.json')
+
+const utilitiesController = require('./utilitiesController')
+
 exports.handleLogin = async (req, resp) => {
-    if (!req.body.email || !req.body.password) {
+    if ((!req.body.email || !req.body.password) || !utilitiesController.checkEmail(req.body.email, serverConfigs.domainsArray)) {
         return resp.sendStatus(422)
     }
     
