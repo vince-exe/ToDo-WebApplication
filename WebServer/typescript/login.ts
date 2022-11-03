@@ -1,5 +1,8 @@
 const emailInput = document.getElementById('email-input') as HTMLInputElement
+emailInput.value = ""
+
 const passwordInput = document.getElementById('password-input') as HTMLInputElement
+passwordInput.value = ""
 
 const loginButton = document.getElementById('login-button') as HTMLButtonElement
 
@@ -44,7 +47,7 @@ loginButton.addEventListener('click', (e) => {
         switch (response.status) {
             /* successfully logged in */
             case 200:
-                console.log('logged in')
+                window.location.href = 'http://localhost:3000/views/homepage.html'
                 break
 
             /* paramaters wrong */

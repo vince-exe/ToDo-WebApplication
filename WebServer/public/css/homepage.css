@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poor+Story&family=Roboto+Slab&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: rgb(11, 40, 65);
+}
+
+.main-nav-bar {
+    background-color: rgb(19, 59, 94);
+    display: flex;
+    justify-content: space-around;
+    height: 130px;
+    align-items: center;
+    text-align: center;
+}
+
+.title-container-nav-bar {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.title-container-nav-bar h2{
+    font-family: 'Poor Story', cursive;
+    font-size: 60px;
+    color: rgb(189, 211, 230);
+    cursor: pointer;
+}
+
+.links-list-nav-bar {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.single-link a {
+    font-family: 'Poor Story', cursive;
+    font-size: 35px;
+    color: rgb(189, 211, 230);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    background-color: white; 
+}
+
+@media(max-width: 855px) {  
+    .main-nav-bar {
+        position: fixed;
+        top: 0;
+        height: 400px;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    .links-list-nav-bar {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+    }
+}

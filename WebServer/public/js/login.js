@@ -1,5 +1,7 @@
 var emailInput = document.getElementById('email-input');
+emailInput.value = "";
 var passwordInput = document.getElementById('password-input');
+passwordInput.value = "";
 var loginButton = document.getElementById('login-button');
 var errorTextDiv = document.getElementsByClassName('error-text-div')[0];
 var errorText = document.getElementById('error-text');
@@ -36,7 +38,7 @@ loginButton.addEventListener('click', function (e) {
         switch (response.status) {
             /* successfully logged in */
             case 200:
-                console.log('logged in');
+                window.location.href = 'http://localhost:3000/views/homepage.html';
                 break;
             /* paramaters wrong */
             case 422:

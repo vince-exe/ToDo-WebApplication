@@ -1,5 +1,8 @@
 const emailInput = document.getElementById('email-input') as HTMLInputElement
+emailInput.value = ""
+
 const passwordInput = document.getElementById('password-input') as HTMLInputElement
+passwordInput.value = ""
 
 const registrationButton = document.getElementById('registration-button') as HTMLButtonElement
 
@@ -22,7 +25,7 @@ fetch('http://localhost:3000/login/api/get-configs')
     })
 
 window.addEventListener('keyup', e => {
-    if(e.code == 'Enter') {
+    if (e.code == 'Enter') {
         registrationButton.click()
     }
 })
@@ -39,34 +42,34 @@ registrationButton.addEventListener('click', e => {
             'password': passwordInput.value
         })
     })
-    .then(response => {
-        switch(response.status) {
-            case 200:
-                console.log('Successfully registered')
-                break
+        .then(response => {
+            switch (response.status) {
+                case 200:
+                    window.location.href = 'http://localhost:3000/views/homepage.html'
+                    break
 
-            case 422:
-                errorTextDiv.style.display = 'flex'
-                errorText.style.display = 'block'
-                errorText.textContent = "Email or password invalid"
-                break
+                case 422:
+                    errorTextDiv.style.display = 'flex'
+                    errorText.style.display = 'block'
+                    errorText.textContent = "Email or password invalid"
+                    break
 
-            case 409:
-                errorTextDiv.style.display = 'flex'
-                errorText.style.display = 'block'
-                errorText.textContent = "There is already an account with this email"
-                break
+                case 409:
+                    errorTextDiv.style.display = 'flex'
+                    errorText.style.display = 'block'
+                    errorText.textContent = "There is already an account with this email"
+                    break
 
-            case 500:
-                errorTextDiv.style.display = 'flex'
-                errorText.style.display = 'block'
-                errorText.textContent = "Application Error"
-                break
-        }
-    })
-    .catch(error => {
-        errorTextDiv.style.display = 'flex'
-        errorText.style.display = 'block'
-        errorText.textContent = `${error}`
-    })
+                case 500:
+                    errorTextDiv.style.display = 'flex'
+                    errorText.style.display = 'block'
+                    errorText.textContent = "Application Error"
+                    break
+            }
+        })
+        .catch(error => {
+            errorTextDiv.style.display = 'flex'
+            errorText.style.display = 'block'
+            errorText.textContent = `${error}`
+        })
 })

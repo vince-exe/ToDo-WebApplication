@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Poor+Story&family=Roboto+Slab&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: rgb(11, 40, 65);
+}
+
+.main-nav-bar {
+    background-color: rgb(19, 59, 94);
+    display: flex;
+    justify-content: center;
+    height: 130px;
+    align-items: center;
+}
+
+.title-container-nav-bar {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.title-container-nav-bar h2{
+    font-family: 'Poor Story', cursive;
+    font-size: 50px;
+    color: rgb(189, 211, 230);
+    cursor: pointer;
+}
+
+.error-div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 170px;
+    gap: 55px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 90%;
+    font-family: 'Poor Story', cursive;
+}
+
+.error-div h1 {
+    font-size: 60px;
+    font-weight: 800;
+    color: rgb(189, 211, 230);
+    cursor: pointer;
+}
+
+.error-div h3 {
+    font-size: 30px;
+    font-weight: 600;
+    color: rgb(189, 211, 230);
+    cursor: pointer;
+}
+
+.error-div a {
+    text-decoration-color: rgb(118, 140, 160);
+    font-size: 30px;
+    font-weight: 600;
+    color: rgb(118, 140, 160);
+}

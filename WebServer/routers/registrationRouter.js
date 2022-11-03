@@ -2,10 +2,10 @@ const express = require('express')
 const router = express.Router()
 
 const registrationController = require('../controllers/registrationController')
-const utilitiesController = require('../controllers/utilitiesController')
+const utilities = require('../utils/utils')
 
 router.post('/api/registration', registrationController.handleRegistration)
 
-router.get('/api/get-configs', utilitiesController.getServerConfigs)
+router.get('/api/get-configs', utilities.Utils.getServerConfigs)
 
 module.exports = router

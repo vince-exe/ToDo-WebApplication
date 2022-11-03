@@ -19,11 +19,9 @@ app.get(['/', '/login(.html)?'], (req, resp) => {
     resp.redirect('http://localhost:3000/views/login.html')
 })
 
-/*
-app.all('*', (req, resp) => {
+app.get('/*', (req, resp) => {
     resp.redirect('http://localhost:3000/views/404.html')
 })
-*/
 
 mongoose.connect('mongodb://localhost:27017/firstDatabase')
 .then(resp => {
