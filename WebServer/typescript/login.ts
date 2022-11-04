@@ -47,6 +47,7 @@ loginButton.addEventListener('click', (e) => {
         switch (response.status) {
             /* successfully logged in */
             case 200:
+                document.cookie = `email=${emailInput.value}; expires=Thu, 18 Dec 2024 12:00:00 UTC; path=/`
                 window.location.href = 'http://localhost:3000/views/homepage.html'
                 break
 

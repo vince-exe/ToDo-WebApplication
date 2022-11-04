@@ -45,6 +45,7 @@ registrationButton.addEventListener('click', e => {
         .then(response => {
             switch (response.status) {
                 case 200:
+                    document.cookie = `email=${emailInput.value}; expires=Thu, 18 Dec 2024 12:00:00 UTC; path=/`
                     window.location.href = 'http://localhost:3000/views/homepage.html'
                     break
 

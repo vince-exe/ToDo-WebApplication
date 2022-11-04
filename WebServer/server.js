@@ -8,12 +8,12 @@ const app = express()
 
 app.use(cors())
 app.use(bodyParser.json())
-
 app.use(express.static('public'))
 
 /* routers */
 app.use('/login', require('./routers/loginRouter'))
 app.use('/registration', require('./routers/registrationRouter'))
+app.use('/homepage', require('./routers/homePageRouter'))
 
 app.get(['/', '/login(.html)?'], (req, resp) => {
     resp.redirect('http://localhost:3000/views/login.html')

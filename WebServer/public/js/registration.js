@@ -37,6 +37,7 @@ registrationButton.addEventListener('click', function (e) {
         .then(function (response) {
         switch (response.status) {
             case 200:
+                document.cookie = "email=".concat(emailInput.value, "; expires=Thu, 18 Dec 2024 12:00:00 UTC; path=/");
                 window.location.href = 'http://localhost:3000/views/homepage.html';
                 break;
             case 422:
