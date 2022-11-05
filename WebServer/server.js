@@ -14,6 +14,7 @@ app.use(express.static('public'))
 app.use('/login', require('./routers/loginRouter'))
 app.use('/registration', require('./routers/registrationRouter'))
 app.use('/homepage', require('./routers/homePageRouter'))
+app.use('/todolist', require('./routers/toDoListRouter'))
 
 app.get(['/', '/login(.html)?'], (req, resp) => {
     resp.redirect('http://localhost:3000/views/login.html')
