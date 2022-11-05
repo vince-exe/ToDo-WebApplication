@@ -7,6 +7,7 @@ bodyInput.value = "";
 var createToDOButton = document.getElementById('create-todo-button');
 var errorDiv = document.getElementsByClassName('error-div-container')[0];
 var errorText = document.getElementsByClassName('error-text')[0];
+var exitLink = document.getElementById('exit-link');
 function displayMessage(error) {
     errorDiv.style.display = 'flex';
     errorText.style.display = 'block';
@@ -30,6 +31,11 @@ function getCookie(cname) {
 hamburger.addEventListener('click', function (e) {
     hamburger.classList.toggle("active");
     mainNavBar.classList.toggle("active");
+});
+exitLink.addEventListener('click', function () {
+    /* remove the cookie for the authentication */
+    document.cookie = 'email=; Max-Age=0; path=/; domain=' + location.hostname;
+    window.location.href = 'http://localhost:3000/view/login.html';
 });
 createToDOButton.addEventListener('click', function () {
     fetch('http://localhost:3000/homepage/api/add-todo', {

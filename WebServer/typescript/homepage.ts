@@ -12,6 +12,8 @@ const createToDOButton = document.getElementById('create-todo-button') as HTMLBu
 const errorDiv = document.getElementsByClassName('error-div-container')[0] as HTMLDivElement
 const errorText = document.getElementsByClassName('error-text')[0] as HTMLHeadingElement
 
+const exitLink = document.getElementById('exit-link') as HTMLAnchorElement
+
 function displayMessage(error: string): void {
     errorDiv.style.display = 'flex'
     errorText.style.display = 'block'
@@ -37,6 +39,12 @@ function getCookie(cname) {
 hamburger.addEventListener('click', e => {
     hamburger.classList.toggle("active")
     mainNavBar.classList.toggle("active")
+})
+
+exitLink.addEventListener('click', () => {
+    /* remove the cookie for the authentication */
+    document.cookie = 'email=; Max-Age=0; path=/; domain=' + location.hostname;
+    window.location.href = 'http://localhost:3000/view/login.html'
 })
 
 createToDOButton.addEventListener('click', () => {
