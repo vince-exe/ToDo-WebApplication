@@ -23,6 +23,22 @@
             <span class="bar"></span>
         </div>
     </nav>
+    <div class="create-todo-card-container">
+        <h1>Create your ToDo</h1>
+        <h3>It's always good to have something to do</h3>
+        <div class="input-container-title">
+            <input type="text" placeholder="title" id="title-input" maxlength="20">
+        </div>
+        <div class="input-container-body-todo">
+            <textarea id="body-input">
+
+            </textarea>
+        </div>
+        <button id="create-todo-button">Create</button>
+    </div>
+    <div class="error-div-container">
+        <h3 class="error-text">There is already a ToDo with this title</h3>
+    </div>
     <script src="../js/homepage.js"></script>
 </body>
 </html>
