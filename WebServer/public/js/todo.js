@@ -100,7 +100,7 @@ var removeTODO = function (title, email) {
     })["catch"](function (error) { console.log(error); });
 };
 /* call the API to update a todo */
-var updtTODO = function (title, body, email) {
+var updtTODO = function (title, newTitle, body, email) {
     fetch('http://localhost:3000/todolist/api/updt-todo', {
         method: 'POST',
         headers: {
@@ -108,6 +108,7 @@ var updtTODO = function (title, body, email) {
         },
         body: JSON.stringify({
             'title': title,
+            'newTitle': newTitle,
             'body': body,
             'email': getCookie("email")
         })
@@ -150,7 +151,7 @@ function printToDoOnTheSameRow(n, max, todoArray) {
             updateButton.classList.add('button');
             updateButton.id = 'update-todo-button';
             updateButton.addEventListener('click', function () {
-                updtTODO(titleInput.value, textArea.value, getCookie("email"));
+                updtTODO(todoArray[j].title, titleInput.value, textArea.value, getCookie("email"));
             });
             var deleteButton = document.createElement('button');
             deleteButton.textContent = 'Delete';
@@ -200,7 +201,7 @@ function printToDoRange(min, max, todoArray) {
         updateButton.classList.add('button');
         updateButton.id = 'update-todo-button';
         updateButton.addEventListener('click', function () {
-            updtTODO(titleInput.value, textArea.value, getCookie("email"));
+            updtTODO(todoArray[i].title, titleInput.value, textArea.value, getCookie("email"));
         });
         var deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';

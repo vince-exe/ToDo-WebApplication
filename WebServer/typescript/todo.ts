@@ -69,7 +69,7 @@ const removeTODO = (title: string, email: string) => {
 }
 
 /* call the API to update a todo */
-const updtTODO = (title: string, body: string, email: string) => {
+const updtTODO = (title: string, newTitle: string, body: string, email: string) => {
     fetch('http://localhost:3000/todolist/api/updt-todo', {
         method: 'POST',
         headers: {
@@ -77,6 +77,7 @@ const updtTODO = (title: string, body: string, email: string) => {
         },
         body: JSON.stringify({
             'title': title,
+            'newTitle': newTitle,
             'body': body,
             'email': getCookie("email")
         })
@@ -132,7 +133,7 @@ function printToDoOnTheSameRow(n: number, max: number, todoArray: any): void {
             updateButton.id = 'update-todo-button'
             
             updateButton.addEventListener('click', () => {
-                updtTODO(titleInput.value, textArea.value, getCookie("email"))
+                updtTODO(todoArray[j].title, titleInput.value, textArea.value, getCookie("email"))
             })
 
             let deleteButton = document.createElement('button') as HTMLButtonElement
@@ -196,7 +197,7 @@ function printToDoRange(min: number, max: number, todoArray: any): void {
         updateButton.id = 'update-todo-button'
 
         updateButton.addEventListener('click', () => {
-            updtTODO(titleInput.value, textArea.value, getCookie("email"))
+            updtTODO(todoArray[i].title, titleInput.value, textArea.value, getCookie("email"))
         })
 
         let deleteButton = document.createElement('button') as HTMLButtonElement
