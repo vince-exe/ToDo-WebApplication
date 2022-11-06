@@ -81,11 +81,29 @@ function calculateMultiply(n, n1) {
     }
     return n1;
 }
+/* call the API to remove the todo */
+var removeTODO = function (title, email) {
+    fetch('http://localhost:3000/todolist/api/delete-todo', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            'title': title,
+            'email': getCookie("email")
+        })
+    })
+        .then(function (response) {
+        if (response.status == 200) {
+            window.location.href = 'http://localhost:3000/views/todo.html';
+        }
+    })["catch"](function (error) { console.log(error); });
+};
 /* print n todo items for each row */
 function printToDoOnTheSameRow(n, max, todoArray) {
     for (var i = n; i <= max; i += n) {
         var containerDiv = document.createElement('div');
-        for (var j = i - n, k = 0; k < n; k++, j++) {
+        var _loop_1 = function (j, k) {
             containerDiv.classList.add('container1');
             var todoDiv = document.createElement('div');
             todoDiv.classList.add('to-do-container');
@@ -119,17 +137,21 @@ function printToDoOnTheSameRow(n, max, todoArray) {
             deleteButton.classList.add('button');
             deleteButton.id = 'remove-todo-button';
             deleteButton.addEventListener('click', function () {
+                removeTODO(todoArray[j].title, getCookie("email"));
             });
             todoDiv.appendChild(updateButton);
             todoDiv.appendChild(deleteButton);
             containerDiv.appendChild(todoDiv);
+        };
+        for (var j = i - n, k = 0; k < n; k++, j++) {
+            _loop_1(j, k);
         }
         document.body.appendChild(containerDiv);
     }
 }
 /* print n todo items for each row */
 function printToDoRange(min, max, todoArray) {
-    for (var i = min; i < max; i++) {
+    var _loop_2 = function (i) {
         var containerDiv = document.createElement('div');
         containerDiv.classList.add('container1');
         var todoDiv = document.createElement('div');
@@ -157,14 +179,22 @@ function printToDoRange(min, max, todoArray) {
         updateButton.textContent = 'Update';
         updateButton.classList.add('button');
         updateButton.id = 'update-todo-button';
+        updateButton.addEventListener('click', function () {
+        });
         var deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
         deleteButton.classList.add('button');
         deleteButton.id = 'remove-todo-button';
+        deleteButton.addEventListener('click', function () {
+            removeTODO(todoArray[i].title, getCookie("email"));
+        });
         todoDiv.appendChild(updateButton);
         todoDiv.appendChild(deleteButton);
         containerDiv.appendChild(todoDiv);
         document.body.appendChild(containerDiv);
+    };
+    for (var i = min; i < max; i++) {
+        _loop_2(i);
     }
 }
 /* send a POST request to get the to-do list of the user */

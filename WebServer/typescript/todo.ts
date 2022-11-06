@@ -48,6 +48,26 @@ function calculateMultiply(n: number, n1: number): number {
     return n1
 }
 
+/* call the API to remove the todo */
+const removeTODO = (title: string, email: string) => {
+    fetch('http://localhost:3000/todolist/api/delete-todo', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            'title': title,
+            'email': getCookie("email")
+        })
+    })
+    .then(response => {
+        if(response.status == 200) {
+            window.location.href = 'http://localhost:3000/views/todo.html'
+        }
+    })
+    .catch(error => { console.log(error) })
+}
+
 /* print n todo items for each row */
 function printToDoOnTheSameRow(n: number, max: number, todoArray: any): void {
     for (let i = n; i <= max; i += n) {
@@ -91,7 +111,7 @@ function printToDoOnTheSameRow(n: number, max: number, todoArray: any): void {
             updateButton.id = 'update-todo-button'
             
             updateButton.addEventListener('click', () => {
-                
+
             })
 
             let deleteButton = document.createElement('button') as HTMLButtonElement
@@ -100,7 +120,7 @@ function printToDoOnTheSameRow(n: number, max: number, todoArray: any): void {
             deleteButton.id = 'remove-todo-button'
 
             deleteButton.addEventListener('click', () => {
-
+                removeTODO(todoArray[j].title, getCookie("email"))
             })
             
             todoDiv.appendChild(updateButton)
@@ -154,11 +174,19 @@ function printToDoRange(min: number, max: number, todoArray: any): void {
         updateButton.classList.add('button')
         updateButton.id = 'update-todo-button'
 
+        updateButton.addEventListener('click', () => {
+
+        })
+
         let deleteButton = document.createElement('button') as HTMLButtonElement
         deleteButton.textContent = 'Delete'
         deleteButton.classList.add('button')
         deleteButton.id = 'remove-todo-button'
 
+        deleteButton.addEventListener('click', () => {
+            removeTODO(todoArray[i].title, getCookie("email"))
+        })
+        
         todoDiv.appendChild(updateButton)
         todoDiv.appendChild(deleteButton)
 
