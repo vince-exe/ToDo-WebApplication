@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/todo.css">
+    <title>ToDo List</title>
+</head>
+<body>
+    <nav class="main-nav-bar">
+        <div class="title-container-nav-bar">
+            <h2>ToDo Application</h2>
+        </div>
+        <ul class="links-list-nav-bar">
+            <li class="single-link"><a href="./login.html">Login</a></li>
+            <li class="single-link"><a href="" id="exit-link">Exit</a></li>
+            <li class="single-link"><a href="./homepage.html">HomePage</a></li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+    <div class="container1">
+        <div class="to-do-container">
+            <h1>Your ToDo</h1>
+            <div class="input-container-title">
+                <input type="text" placeholder="title" id="title-input" maxlength="20">
+            </div>
+            <div class="input-container-body-todo">
+                <textarea id="body-input">
+
+                </textarea>
+            </div>
+            <button id="update-todo-button" class="button">Update</button>
+            <button id="remove-todo-button" class="button">Delete</button>
+        </div>
+    </div>
+    <script src="../js/todo.js"></script>
+</body>
+</html>
