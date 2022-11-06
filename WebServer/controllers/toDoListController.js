@@ -24,7 +24,7 @@ exports.deleteToDo = async (req, resp) => {
 }
 
 exports.updtToDO = async (req, resp) => {
-    if (!req.body.title || !req.body.body || !req.body.email) {
+    if (!req.body.title || !req.body.body || !req.body.email || !req.body.newTitle) {
         return resp.sendStatus(422)
     }
 
@@ -40,7 +40,7 @@ exports.updtToDO = async (req, resp) => {
         },
         {
             $set: {
-                title: req.body.title,
+                title: req.body.newTitle,
                 emailCreator: req.body.email,
                 body: req.body.body
             }
