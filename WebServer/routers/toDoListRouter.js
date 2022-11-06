@@ -10,4 +10,6 @@ router.route('/api/get-todo').post(AUTHMiddleware.checkAUTH, toDoListController.
 
 router.route('/api/delete-todo').post(AUTHMiddleware.checkAUTH, toDoListController.deleteToDo)
 
+router.route('/api/updt-todo').post(AUTHMiddleware.checkAUTH, toDoListController.updtToDO)
+
 module.exports = router
