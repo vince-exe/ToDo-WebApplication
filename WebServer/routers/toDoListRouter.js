@@ -8,4 +8,6 @@ router.route('/').post(AUTHMiddleware.checkAUTH, (req, resp) => { resp.sendStatu
 
 router.route('/api/get-todo').post(AUTHMiddleware.checkAUTH, toDoListController.getToDoList)
 
+router.route('/api/delete-todo').post(AUTHMiddleware.checkAUTH, toDoListController.deleteToDo)
+
 module.exports = router

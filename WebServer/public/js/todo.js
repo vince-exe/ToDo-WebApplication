@@ -112,10 +112,14 @@ function printToDoOnTheSameRow(n, max, todoArray) {
             updateButton.textContent = 'Update';
             updateButton.classList.add('button');
             updateButton.id = 'update-todo-button';
+            updateButton.addEventListener('click', function () {
+            });
             var deleteButton = document.createElement('button');
             deleteButton.textContent = 'Delete';
             deleteButton.classList.add('button');
             deleteButton.id = 'remove-todo-button';
+            deleteButton.addEventListener('click', function () {
+            });
             todoDiv.appendChild(updateButton);
             todoDiv.appendChild(deleteButton);
             containerDiv.appendChild(todoDiv);

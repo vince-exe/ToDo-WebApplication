@@ -89,12 +89,20 @@ function printToDoOnTheSameRow(n: number, max: number, todoArray: any): void {
             updateButton.textContent = 'Update'
             updateButton.classList.add('button')
             updateButton.id = 'update-todo-button'
+            
+            updateButton.addEventListener('click', () => {
+                
+            })
 
             let deleteButton = document.createElement('button') as HTMLButtonElement
             deleteButton.textContent = 'Delete'
             deleteButton.classList.add('button')
             deleteButton.id = 'remove-todo-button'
 
+            deleteButton.addEventListener('click', () => {
+
+            })
+            
             todoDiv.appendChild(updateButton)
             todoDiv.appendChild(deleteButton)
 
