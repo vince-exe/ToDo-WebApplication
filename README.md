@@ -1,5 +1,5 @@
 # <p align="center"> 📚 ToDo Web Application 📚<p>
-### <p align="center"> 📘 Web Application that gives to the user the possibility of ( create / delete / remove ) to-do 📘</p><br>
+### <p align="center"> 📘 Web Application that gives to the user the possibility of manage to-do 📘</p><br>
 
 ## <p align="center">🔨 Requirements To Build 🔨</p>
 #### <p align="center">-> 🔨 Npm package manager 🔨 <- </p>
